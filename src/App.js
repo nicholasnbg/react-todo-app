@@ -15,7 +15,7 @@ class App extends Component {
         dueTime: '',
         location: 'Coles',
         details: 'Make sure you have $5 to buy the milk with',
-        complete: false
+        complete: true
       },
       item2:{
         heading: 'Put bins out',
@@ -43,6 +43,12 @@ class App extends Component {
     this.setState({items});
   }
 
+  markComplete = (itemKey) => {
+    const items = {...this.state.items};
+    items[itemKey].complete = true;
+    this.setState({items})
+  }
+
   render() {
     return(
       <div className="app">
@@ -56,6 +62,7 @@ class App extends Component {
            /> 
           <TodoList
             items={this.state.items}
+            markComplete={this.markComplete}          
           /> 
         </div>
       </div>

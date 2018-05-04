@@ -38,6 +38,7 @@ export default class TodoListItem extends Component {
           {dueTime && <span>Due Time: {dueTime}</span>}
           {location && <span>Location: {location}</span>}
           {details && <span>Details: {details}</span>}
+          <button className="complete" onClick={()=>this.props.markComplete(itemKey)}>Done</button>
         </div>
       </div>
     )
