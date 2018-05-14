@@ -67,34 +67,21 @@ class App extends Component {
   }
 
   render() {
-    return ( <
-      div className = "app" >
-      <
-      Header changeDetailsPanel = {
-        this.changeDetailsPanel
-      }
-      /> <
-      div className = "todoComponents" >
-      <
-      TodoDetail detailsStatus = {
-        this.state.detailsStatus
-      }
-      addTodo = {
-        this.addTodo
-      }
-      />  <
-      TodoList items = {
-        this.state.items
-      }
-      markComplete = {
-        this.markComplete
-      }
-      changeDetailsPanel = {
-        this.changeDetailsPanel
-      }
-      />  <
-      /div> <
-      /div>
+    return ( 
+    <div className = "app" >
+      <Header changeDetailsPanel = {this.changeDetailsPanel}/> 
+      <div className = "todoComponents" >
+      <TodoDetail 
+        detailsStatus = {this.state.detailsStatus} 
+        addTodo = {this.addTodo}
+      />  
+      <TodoList 
+        items = {this.state.items} 
+        markComplete = {this.markComplete}
+        changeDetailsPanel = {this.changeDetailsPanel}
+      />  
+      </div> 
+    </div>
     )
   }
 }
