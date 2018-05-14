@@ -8,13 +8,15 @@ class TodoList extends Component {
 
     return (
         <div className="todo-list">
-            {Object.keys(items).map(item =>  (
+            {Object.keys(items)
+            .map(item =>  (
               !items[item].complete && 
                 <TodoListItem 
                   item={items[item]} 
                   key={item} 
                   itemKey={item}
                   markComplete={this.props.markComplete}
+                  changeDetailsPanel = {this.props.changeDetailsPanel}
                    />
               ))}
         </div>

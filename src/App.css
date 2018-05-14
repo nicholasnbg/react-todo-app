@@ -79,6 +79,11 @@
   margin: 2px 0;
 }
 
+.todo-item .buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
 
 /***********TODO FORM***********************/
 

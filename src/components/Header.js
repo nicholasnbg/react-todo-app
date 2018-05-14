@@ -7,7 +7,7 @@ export default class Header extends Component {
         <h1>ToDo App</h1>
         <button 
         className="addTodo"
-        onClick={() => {this.props.changeDetailsPanel('add')}}
+        onClick={() => this.props.changeDetailsPanel('add')}
         >
         ADD +</button>
       </div>

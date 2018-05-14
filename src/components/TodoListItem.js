@@ -30,7 +30,7 @@ export default class TodoListItem extends Component {
       <div className='todo-item' id={itemKey}>
         <div className="header-row">
           <h3>{heading}</h3>
-          <h4>Due: {dueDate}</h4>
+          <h4>Due: {dueDate ? dueDate : 'indefinite'}</h4>
           <button onClick={()=>this.toggleShow(itemKey)}>>></button>
         </div>
         <div className="otherInfo">
@@ -38,7 +38,11 @@ export default class TodoListItem extends Component {
           {dueTime && <span>Due Time: {dueTime}</span>}
           {location && <span>Location: {location}</span>}
           {details && <span>Details: {details}</span>}
-          <button className="complete" onClick={()=>this.props.markComplete(itemKey)}>Done</button>
+          <span className="buttons">
+            <button className="edit" onClick={()=>this.props.changeDetailsPanel('edit', itemKey)}>Edit</button>
+            <button className="cancel">Cancel</button>
+            <button className="complete" onClick={()=>this.props.markComplete(itemKey)}>Done</button>              
+          </span>
         </div>
       </div>
     )
