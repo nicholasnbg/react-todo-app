@@ -33,6 +33,7 @@ class App extends Component {
     editKey: ""
   };
 
+  //************CHANGES DETAILS PANE BETWEEN ADDING / EDITING ******** */
   changeDetailsPanel = (status, itemKey) => {
     this.setState({
       detailsStatus: status,
@@ -53,11 +54,13 @@ class App extends Component {
     this.setState({
       items
     });
+    //RESET DETAILS PANEL
     this.setState({
       detailsStatus: ""
     });
   };
 
+  //MARK TODO ITEM AS COMPLETE
   markComplete = itemKey => {
     const items = {
       ...this.state.items
