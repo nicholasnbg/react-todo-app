@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AddPanel from './AddPanel'
+import EditPanel from './EditPanel'
 
 export default class TodoDetail extends Component {
   state = {
@@ -29,6 +30,12 @@ export default class TodoDetail extends Component {
         {this.props.detailsStatus==="add" && (
           <AddPanel
             addTodo={this.props.addTodo}
+          />
+        )}
+        {this.props.detailsStatus==='edit'&& (
+          <EditPanel
+            editKey = {this.props.editKey}
+            editItem = {this.props.editItem}
           />
         )}
 

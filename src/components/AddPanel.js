@@ -40,7 +40,6 @@ export default class AddPanel extends Component {
     render() {
 
     return (
-      <React.Fragment>
         <div className="addPanel">
             <form 
             ref={(input) => this.addTodoForm = input} 
@@ -53,7 +52,6 @@ export default class AddPanel extends Component {
                 <button type="submit">Add +</button>           
             </form>
         </div>
-      </React.Fragment>
     )
   }
 }

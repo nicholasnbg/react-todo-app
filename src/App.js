@@ -13,7 +13,8 @@ class App extends Component {
       item1: {
         heading: 'Get milk',
         initDate: '18/04/2018',
-        dueDate: '20/04/2018',
+        dueDate: '',
+        indefinite: true,
         dueTime: '',
         location: 'Coles',
         details: 'Make sure you have $5 to buy the milk with',
@@ -23,6 +24,7 @@ class App extends Component {
         heading: 'Put bins out',
         initDate: '19/04/2018',
         dueDate: '23/04/2018',
+        indefinite: false,
         dueTime: '22:00',
         location: 'Home',
         details: 'It is a recycling week',
@@ -74,6 +76,8 @@ class App extends Component {
       <TodoDetail 
         detailsStatus = {this.state.detailsStatus} 
         addTodo = {this.addTodo}
+        editKey={this.state.editKey}
+        editItem={this.state.editKey ? this.state.items[this.state.editKey] : ''}
       />  
       <TodoList 
         items = {this.state.items} 
