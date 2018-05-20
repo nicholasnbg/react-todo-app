@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 
 export default class EditPanel extends Component {
   state = {
@@ -18,7 +19,26 @@ export default class EditPanel extends Component {
     if (this.props !== nextProps) {
       document.getElementById("editForm").reset();
       this.setState({
-        isIndefinite: nextProps.editItem.indefinite
+        isIndefinite: nextProps.editItem.indefinite,
+        item: nextProps.editItem
+      });
+    }
+  };
+
+  changeIndefinite = () => {
+    console.log("changing indef");
+    const item = { ...this.state.item };
+    if (this.state.isIndefinite) {
+      item.indefinite = false;
+      this.setState({
+        isIndefinite: false,
+        item: item
+      });
+    } else {
+      item.indefinite = true;
+      this.setState({
+        isIndefinite: true,
+        item: item
       });
     }
   };
@@ -60,12 +80,17 @@ export default class EditPanel extends Component {
           </span>
           <span>
             <label>Due Date: </label>
+            {/* TODO: need to reformat date going back into item, reverse of
+            defualt value code */}
             <input
               disabled={this.state.isIndefinite}
-              type="text"
+              type="date"
               ref={input => (this.dueDate = input)}
               name="dueDate"
-              defaultValue={item.dueDate}
+              defaultValue={item.dueDate
+                .split("/")
+                .reverse()
+                .join("-")}
               onChange={e => this.handleChange(e)}
             />
             <br />or
@@ -73,18 +98,19 @@ export default class EditPanel extends Component {
             Indefinite:
             <input
               type="checkbox"
-              onClick={() => !item.indefinite}
               ref={input => (this.indefinite = input)}
               name="indefinite"
               defaultChecked={item.indefinite}
-              onChange={e => this.handleChange(e)}
+              onChange={() => {
+                this.changeIndefinite();
+              }}
             />
           </span>
           <span>
             <label>Due Time: </label>
             <input
               disabled={this.state.isIndefinite}
-              type="text"
+              type="time"
               ref={input => (this.dueTime = input)}
               name="dueTime"
               defaultValue={item.dueTime}

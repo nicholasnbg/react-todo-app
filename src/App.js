@@ -30,14 +30,16 @@ class App extends Component {
       }
     },
     detailsStatus: "",
-    editKey: ""
+    editKey: "",
+    editItem: {}
   };
 
   //************CHANGES DETAILS PANE BETWEEN ADDING / EDITING ******** */
   changeDetailsPanel = (status, itemKey) => {
     this.setState({
       detailsStatus: status,
-      editKey: itemKey
+      editKey: itemKey,
+      editItem: this.state.items[itemKey]
     });
   };
 
@@ -98,9 +100,7 @@ class App extends Component {
             detailsStatus={this.state.detailsStatus}
             addTodo={this.addTodo}
             editKey={this.state.editKey}
-            editItem={
-              this.state.editKey ? this.state.items[this.state.editKey] : ""
-            }
+            editItem={this.state.editItem}
             editTodo={this.editTodo}
           />
           <TodoList
