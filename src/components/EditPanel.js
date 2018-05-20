@@ -24,12 +24,17 @@ export default class EditPanel extends Component {
   };
 
   handleChange = e => {
-    console.log(e.target.value);
     const item = this.state.item;
     item[e.target.name] = e.target.value;
     this.setState({
       item
     });
+  };
+
+  editTodoItem = (e, key) => {
+    e.preventDefault();
+    console.log("editing item");
+    this.props.editTodo(this.state.item, key);
   };
 
   render() {
@@ -41,7 +46,7 @@ export default class EditPanel extends Component {
         <form
           ref={input => (this.editTodoForm = input)}
           id="editForm"
-          // onSubmit={(e) => this.editTodo(e)}
+          onSubmit={e => this.editTodoItem(e, key)}
         >
           <span>
             <label>To Do: </label>

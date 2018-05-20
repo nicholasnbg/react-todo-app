@@ -60,6 +60,24 @@ class App extends Component {
     });
   };
 
+  // *********** EDIT TODO *************//
+  editTodo = (editedTodo, editKey) => {
+    const items = {
+      ...this.state.items
+    };
+    if (editedTodo.indefinite) {
+      editedTodo.dueDate = "";
+      editedTodo.dueTime = "";
+    }
+    items[editKey] = editedTodo;
+    this.setState({
+      items
+    });
+    this.setState({
+      detailsStatus: ""
+    });
+  };
+
   //MARK TODO ITEM AS COMPLETE
   markComplete = itemKey => {
     const items = {
@@ -83,6 +101,7 @@ class App extends Component {
             editItem={
               this.state.editKey ? this.state.items[this.state.editKey] : ""
             }
+            editTodo={this.editTodo}
           />
           <TodoList
             items={this.state.items}
