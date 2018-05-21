@@ -10,7 +10,7 @@ class App extends Component {
     items: {
       item1: {
         heading: "Get milk",
-        initDate: "18/04/2018",
+        initDate: "2018-05-20",
         dueDate: "",
         indefinite: true,
         dueTime: "",
@@ -20,8 +20,8 @@ class App extends Component {
       },
       item2: {
         heading: "Put bins out",
-        initDate: "19/04/2018",
-        dueDate: "23/04/2018",
+        initDate: "2018-05-19",
+        dueDate: "2018-05-25",
         indefinite: false,
         dueTime: "22:00",
         location: "Home",
@@ -42,6 +42,8 @@ class App extends Component {
       editItem: this.state.items[itemKey]
     });
   };
+
+  // *********************ADD TODO**********************************//
 
   addTodo = newTodo => {
     const items = {
@@ -91,6 +93,19 @@ class App extends Component {
     });
   };
 
+  /*******************DELETE TODO************* */
+  deleteTodo = itemKey => {
+    if (window.confirm("Are you sure you wish to delete this?")) {
+      const items = {
+        ...this.state.items
+      };
+      const { [itemKey]: value, ...remainingItems } = items;
+      this.setState({
+        items: remainingItems
+      });
+    }
+  };
+
   render() {
     return (
       <div className="app">
@@ -107,6 +122,7 @@ class App extends Component {
             items={this.state.items}
             markComplete={this.markComplete}
             changeDetailsPanel={this.changeDetailsPanel}
+            deleteTodo={this.deleteTodo}
           />
         </div>
       </div>

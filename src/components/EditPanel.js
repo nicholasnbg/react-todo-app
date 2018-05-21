@@ -80,17 +80,12 @@ export default class EditPanel extends Component {
           </span>
           <span>
             <label>Due Date: </label>
-            {/* TODO: need to reformat date going back into item, reverse of
-            defualt value code */}
             <input
               disabled={this.state.isIndefinite}
               type="date"
               ref={input => (this.dueDate = input)}
               name="dueDate"
-              defaultValue={item.dueDate
-                .split("/")
-                .reverse()
-                .join("-")}
+              defaultValue={item.dueDate}
               onChange={e => this.handleChange(e)}
             />
             <br />or
