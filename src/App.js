@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
+import moment from "moment";
 /*COMPONENT IMPORTS */
 import Header from "./components/Header";
 import TodoDetail from "./components/TodoDetail";
 import TodoList from "./components/TodoList";
+
+//Helper Functions
+import { formatDate } from "./helpers";
 
 class App extends Component {
   state = {
@@ -31,7 +35,8 @@ class App extends Component {
     },
     detailsStatus: "",
     editKey: "",
-    editItem: {}
+    editItem: {},
+    filterPeriod: {}
   };
 
   //************CHANGES DETAILS PANE BETWEEN ADDING / EDITING ******** */
@@ -106,10 +111,39 @@ class App extends Component {
     }
   };
 
+  // **********************SET FILTER DATE ************
+  setFilterPeriod = newFilterPeriod => {
+    console.log("setting filter period to " + newFilterPeriod);
+    let start, end;
+    const today = new Date();
+    if (newFilterPeriod === "today") {
+      start = formatDate(today);
+      end = formatDate(moment(today).add(1, "day"));
+    } else if (newFilterPeriod === "tomorrow") {
+      start = formatDate(moment(today).add(1, "day"));
+      end = formatDate(moment(today).add(2, "day"));
+    } else if (newFilterPeriod === "week") {
+      start = formatDate(today);
+      end = formatDate(moment(today).add(1, "week"));
+    } else if (newFilterPeriod === "month") {
+      start = formatDate(today);
+      end = formatDate(moment(today).add(1, "month"));
+    }
+    this.setState({
+      filterPeriod: {
+        start: start,
+        end: end
+      }
+    });
+  };
+
   render() {
     return (
       <div className="app">
-        <Header changeDetailsPanel={this.changeDetailsPanel} />
+        <Header
+          changeDetailsPanel={this.changeDetailsPanel}
+          setFilterPeriod={this.setFilterPeriod}
+        />
         <div className="todoComponents">
           <TodoDetail
             detailsStatus={this.state.detailsStatus}
@@ -123,6 +157,7 @@ class App extends Component {
             markComplete={this.markComplete}
             changeDetailsPanel={this.changeDetailsPanel}
             deleteTodo={this.deleteTodo}
+            filterPeriod={this.state.filterPeriod}
           />
         </div>
       </div>
