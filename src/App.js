@@ -128,6 +128,10 @@ class App extends Component {
     } else if (newFilterPeriod === "month") {
       start = formatDate(today);
       end = formatDate(moment(today).add(1, "month"));
+    } else if (newFilterPeriod === "noFilter") {
+      this.setState({
+        filterPeriod: ""
+      });
     }
     this.setState({
       filterPeriod: {

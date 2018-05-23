@@ -19,7 +19,8 @@ export default class FilterBar extends Component {
             <option value="today">Today</option>
             <option value="tomorrow">Tomorrow</option>
             <option value="week">Next 7 Days</option>
-            <option value="month">Rest of this month</option>
+            <option value="month">In Next Month</option>
+            <option value="noFilter">See All...</option>
           </select>
         </span>
 
