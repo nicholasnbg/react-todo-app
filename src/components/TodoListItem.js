@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import { formatDate } from "../helpers";
 
 export default class TodoListItem extends Component {

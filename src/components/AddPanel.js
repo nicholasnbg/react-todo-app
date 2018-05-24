@@ -22,8 +22,8 @@ export default class AddPanel extends Component {
     };
     this.props.addTodo(newTodo);
     this.addTodoForm.reset();
-    !this.dueDate.disabled;
-    !this.dueTime.disabled;
+    this.dueDate.disabled = false;
+    this.dueTime.disabled = false;
   };
 
   changeIndefinite = () => {
