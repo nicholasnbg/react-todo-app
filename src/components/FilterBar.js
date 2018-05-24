@@ -15,12 +15,20 @@ export default class FilterBar extends Component {
     return (
       <div className="filterBar">
         <span>
+          <select name="filterComplete" id="filterComplete">
+            <option value="noFilter">Show All...</option>
+            <option value="complete">Show Completed</option>
+            <option value="incomplete">Show Incomplete</option>
+          </select>
+        </span>
+
+        <span>
           <select name="filterDate" id="filterDate">
+            <option value="noFilter">See All...</option>
             <option value="today">Today</option>
             <option value="tomorrow">Tomorrow</option>
             <option value="week">Next 7 Days</option>
             <option value="month">In Next Month</option>
-            <option value="noFilter">See All...</option>
           </select>
         </span>
 
@@ -33,11 +41,14 @@ export default class FilterBar extends Component {
         </span> */}
 
         <button
-          onClick={() =>
+          onClick={() => {
             this.props.setFilterPeriod(
               document.querySelector("#filterDate").value
-            )
-          }
+            );
+            this.props.setCompleteFilter(
+              document.querySelector("#filterComplete").value
+            );
+          }}
         >
           Apply
         </button>

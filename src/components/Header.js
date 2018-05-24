@@ -12,7 +12,10 @@ export default class Header extends Component {
         >
           ADD +
         </button>
-        <FilterBar setFilterPeriod={this.props.setFilterPeriod} />
+        <FilterBar
+          setFilterPeriod={this.props.setFilterPeriod}
+          setCompleteFilter={this.props.setCompleteFilter}
+        />
       </div>
     );
   }

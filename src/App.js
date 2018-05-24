@@ -20,7 +20,7 @@ class App extends Component {
         dueTime: "",
         location: "Coles",
         details: "Make sure you have $5 to buy the milk with",
-        complete: false
+        complete: true
       },
       item2: {
         heading: "Put bins out",
@@ -36,7 +36,8 @@ class App extends Component {
     detailsStatus: "",
     editKey: "",
     editItem: {},
-    filterPeriod: {}
+    filterPeriod: {},
+    filterComplete: ""
   };
 
   //************CHANGES DETAILS PANE BETWEEN ADDING / EDITING ******** */
@@ -141,12 +142,22 @@ class App extends Component {
     });
   };
 
+  // *****************SET COMPLETED FILTER ***************
+  setCompleteFilter = newFilter => {
+    console.log("setting new completed filter to " + newFilter);
+    this.setState({
+      filterComplete: newFilter
+    });
+  };
+
+  // ***************RENDER FUNTCION*******************************
   render() {
     return (
       <div className="app">
         <Header
           changeDetailsPanel={this.changeDetailsPanel}
           setFilterPeriod={this.setFilterPeriod}
+          setCompleteFilter={this.setCompleteFilter}
         />
         <div className="todoComponents">
           <TodoDetail
@@ -162,6 +173,7 @@ class App extends Component {
             changeDetailsPanel={this.changeDetailsPanel}
             deleteTodo={this.deleteTodo}
             filterPeriod={this.state.filterPeriod}
+            filterComplete={this.state.filterComplete}
           />
         </div>
       </div>
