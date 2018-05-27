@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { formatDate } from "../helpers";
 
+import { CardPanel, Button } from "react-materialize";
+
 export default class TodoListItem extends Component {
   state = {
     showAll: false
@@ -34,11 +36,11 @@ export default class TodoListItem extends Component {
     const { itemKey } = this.props;
 
     return (
-      <div className="todo-item" id={itemKey}>
+      <CardPanel className="todo-item teal black-text lighten-4" id={itemKey}>
         <div className="header-row">
-          <h3> {heading} </h3>
-          <h4> Due: {dueDate ? formatDate(dueDate) : "indefinite"} </h4>
-          <button onClick={() => this.toggleShow(itemKey)}>>> </button>
+          <h5> {heading} </h5>
+          <h5> Due: {dueDate ? formatDate(dueDate) : "indefinite"} </h5>
+          <Button onClick={() => this.toggleShow(itemKey)}>>> </Button>
         </div>
         <div className="otherInfo">
           {initDate && <span> Date Created: {formatDate(initDate)}</span>}
@@ -46,27 +48,27 @@ export default class TodoListItem extends Component {
           {location && <span> Location: {location} </span>}
           {details && <span> Details: {details} </span>}
           <span className="buttons">
-            <button
-              className="edit"
+            <Button
+              className="edit blue"
               onClick={() => this.props.changeDetailsPanel("edit", itemKey)}
             >
               Edit
-            </button>
-            <button
-              className="cancel"
+            </Button>
+            <Button
+              className="cancel red"
               onClick={() => this.props.deleteTodo(itemKey)}
             >
               Cancel
-            </button>
-            <button
-              className="complete"
+            </Button>
+            <Button
+              className="complete green lighten-2"
               onClick={() => this.props.markComplete(itemKey)}
             >
               Done
-            </button>
+            </Button>
           </span>
         </div>
-      </div>
+      </CardPanel>
     );
   }
 }
