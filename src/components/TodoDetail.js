@@ -8,7 +8,6 @@ export default class TodoDetail extends Component {
   };
 
   changeIndefinite = () => {
-    console.log("changing indef");
     if (this.state.isIndefinite) {
       this.setState({
         isIndefinite: false

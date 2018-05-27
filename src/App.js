@@ -144,7 +144,6 @@ class App extends Component {
 
   // *****************SET COMPLETED FILTER ***************
   setCompleteFilter = newFilter => {
-    console.log("setting new completed filter to " + newFilter);
     this.setState({
       filterComplete: newFilter
     });

@@ -11,6 +11,13 @@ export default class FilterBar extends Component {
     });
   }
 
+  setFilters = () => {
+    this.props.setFilterPeriod(document.querySelector("#filterDate").value);
+    this.props.setCompleteFilter(
+      document.querySelector("#filterComplete").value
+    );
+  };
+
   render() {
     return (
       <div className="filterBar">
@@ -32,22 +39,9 @@ export default class FilterBar extends Component {
           </select>
         </span>
 
-        {/* <span>
-          Custom Date:{" "}
-          <input
-            type="date"
-            defaultValue={moment(new Date()).format("YYYY-MM-DD")}
-          />
-        </span> */}
-
         <button
           onClick={() => {
-            this.props.setFilterPeriod(
-              document.querySelector("#filterDate").value
-            );
-            this.props.setCompleteFilter(
-              document.querySelector("#filterComplete").value
-            );
+            this.setFilters();
           }}
         >
           Apply

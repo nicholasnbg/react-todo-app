@@ -18,7 +18,7 @@ export default class AddPanel extends Component {
       dueTime: this.dueTime.value,
       location: this.location.value,
       details: this.details.value,
-      completed: false
+      complete: false
     };
     this.props.addTodo(newTodo);
     this.addTodoForm.reset();
@@ -27,7 +27,6 @@ export default class AddPanel extends Component {
   };
 
   changeIndefinite = () => {
-    console.log("changing indef");
     if (this.state.isIndefinite) {
       this.setState({
         isIndefinite: false

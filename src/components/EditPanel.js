@@ -25,7 +25,6 @@ export default class EditPanel extends Component {
   };
 
   changeIndefinite = () => {
-    console.log("changing indef");
     const item = { ...this.state.item };
     if (this.state.isIndefinite) {
       item.indefinite = false;
